@@ -1,0 +1,17 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class="project">
+<h2>{{projects.projectname}}</h2>
+<p><strong>{{projects.startproject}}</strong></p>
+<p><strong>{{projects.endproject}}</strong></p>
+<p><strong>{{projects.status}}</strong></p>
+<h3>Autor: {{projects.author}}</h3>
+{% if projects.otherauthors %}
+<h4> inni Autorzy:{{projects.otherauthors}}</h4>
+{% endif %}
+<h5>{{projects.descriptionproject}}</h5>
+</div>
+
+
+{% endblock %}

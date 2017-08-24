@@ -1,0 +1,12 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<div class= "contact">
+<h2>Kontakt</h2>
+<form role="form" action="" method="post">
+    {% csrf_token %}
+   {{form.as_p}}
+    <button class="btn btn-lg btn-primary btn-block"  value="Submit" type="submit" >Wyślij</button>
+</form>
+</div>
+{% endblock %}

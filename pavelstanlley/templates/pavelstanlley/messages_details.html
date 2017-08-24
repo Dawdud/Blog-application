@@ -1,0 +1,11 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{{message.subject}}
+<br/>
+<p>{{message.name_surname}} &nbsp;&nbsp;{{message.email}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{message.created_date}}</p>
+<br/>
+{{message.content}}
+
+{% endblock %}

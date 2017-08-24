@@ -1,0 +1,18 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{% for concept in  conceptions %}
+<div class="project_wrapper">
+<h2><a href="{% url 'index' %}project/{{concept.slug}}">{{concept.projectname}}</a></h2>
+    <h3>status projektu:<p>{{concept.status}}</p></h3>
+    <ol>
+    <li>Data rozpoczęcia: <p>{{concept.startproject}}</p></li>
+    <li>Przybliżona data zakończenia: <p>{{concept.endproject}}</p></li>
+    <li>Autor: <p>{{concept.author}}</p> </li>
+    </ol>
+    <h4> opis: {{concept.descritpionproject}} </h4>
+    </div>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'pavelstanlley/base.html' %}
+{%load staticfiles %}
+{% block title %} Znajdź {% endblock %}
+{% block content %}
+<h1> search</h1>
+{% if Post.count > 0 %}
+{% for post in Posts %}
+    <li><a href="/pavelstanlley/p/{{post.id}}/">{{post.title}}</a></li>
+{% endfor %}
+{% else %}
+<li>Nic do pokazania!</li>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{% if category %}
+     <h2>{{ category_name }}</h2>
+         {% if pages %}
+         <ul>
+             {% for page in pages %}
+             <li> {{page.title}}</li>
+             {% endfor %}
+         </ul>
+         {% else %}
+               <strong> Brak kategorii</strong>
+         {% endif %}
+     {% else %}
+        Dana kategoria nie istnieje {{category_name}}
+     {% endif %}
+
+{% endblock %}

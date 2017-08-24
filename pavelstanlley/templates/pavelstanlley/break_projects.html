@@ -1,0 +1,16 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% for break in  break_projects %}
+<div class="project_wrapper">
+<h2><a href="{% url 'index' %}project/{{break.slug}}">{{break.projectname}}</a></h2>
+    <h3>status projektu:<p>{{break.status}}</p></h3>
+    <ol>
+    <li>Data rozpoczęcia: <p>{{break.startproject}}</p></li>
+    <li>Przybliżona data zakończenia: <p>{{break.endproject}}</p></li>
+    <li>Autor: <p>{{break.author}}</p> </li>
+    </ol>
+    <h4> opis: {{break.descritpionproject}} </h4>
+
+</div>
+{% endblock %}

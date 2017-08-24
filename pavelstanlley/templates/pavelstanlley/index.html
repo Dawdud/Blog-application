@@ -1,0 +1,51 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{% if categories %}
+     <ul>
+            {% for category in categories %}
+                  <li>{{ category.name }}</li>
+            {% endfor %}
+            </ul>
+            {% else % }
+            <strong>Nie ma kategorii obecnnie</strong>
+             {% endif %}
+
+
+
+
+<div id="primary">
+{% for p in post %}
+<article>
+
+       <h2>{{ p.title }}</h2>
+       <h3><a href="{% url 'post_detail' slug=p.slug %}">{{p.pub_date}}</a></h3>
+       <hr>
+       <h4>{{p.text|truncatewords:70|safe}}</h4>
+       <h5><a href="{% url 'post_detail' slug=p.slug %}" id="link">Przeczytaj więcej</a></h5>
+</article>
+<hr id="break">
+{% endfor %}
+
+</div>
+
+
+
+
+<div class="pagination">
+
+       <span class="step-links">
+              {% if post.has_previous %}
+                     <a href="?page={{post.previous_page_number}}"> <i class="icon-left-open">poprzednie wpisy</i> </a>
+              {% endif %}
+
+              {% if post.has_next %}
+                     <a href="?page={{post.next_page_number}}"> następne wpisy <i class="demo-icon icon-right-open"></i></a>
+              {% endif %}
+       </span>
+</div>
+
+
+{% endblock  %}
+

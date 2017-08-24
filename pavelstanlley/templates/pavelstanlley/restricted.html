@@ -1,0 +1,10 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<h2> Dodatkowa treść</h2>
+<li><a href="{% url 'Messages' %}">Wiadomości</a></li>
+<li><a href="{% url 'postnew' %}">Tworzenie Postów</a></li>
+<li><a href="{% url 'projectsnew' %}">Tworzenie projektów</a></li>
+
+{% endblock %}

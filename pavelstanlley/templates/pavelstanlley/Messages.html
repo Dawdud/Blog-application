@@ -1,0 +1,28 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+<h2> Nowy kontent</h2>
+ <caption>Wiadomosci</caption>
+{% for message in messages %}
+<center>
+<form action="{%url 'messages_details' pk=message.pk %}delete/yes">
+<table style="width: 50%">
+
+    <tr>
+
+        {% csrf_token %}
+
+    <td><center><p><a href="{%url 'messages_details' pk=message.pk %}"> {{message.name_surname}}  &nbsp;&nbsp;&nbsp; &nbsp;  {{message.subject}} &nbsp; &nbsp; &nbsp; &nbsp;   {{message.created_date}}</a></p></center></td>
+
+
+    </tr>
+
+
+    </table>
+
+    <input type="submit" value="Delete">
+    </form>
+    </center>
+
+{% endfor %}
+{% endblock %}

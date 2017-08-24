@@ -1,0 +1,17 @@
+
+<h2>Archiwum</h2>
+
+<select size="1" name="links" onchange="window.location.href=this.options
+    [this.selectedIndex].value">
+<option value=""> Wybierz miesiac</option>
+<option value="{% url 'index' %}post/2016/2">Luty-2016(3)</option>
+
+
+</select>
+
+
+
+<h2 > Losowe Posty</h2>
+{% for random in random_post %}
+<li>  <a href= "{% url 'index' %}post/{{random.id}}">{{random.title}}</a> </li>
+{% endfor %}

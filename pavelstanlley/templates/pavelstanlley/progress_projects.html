@@ -1,0 +1,18 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+{% for p in progress %}
+    <div class="project_wrapper">
+<h2><a href="{% url 'index' %}project/{{p.slug}}">{{p.projectname}}</a></h2>
+    <h3>status projektu:<p>{{p.status}}</p></h3>
+    <ol>
+    <li>Data rozpoczęcia: <p>{{p.startproject}}</p></li>
+    <li>Przybliżona data zakończenia: <p>{{p.endproject}}</p></li>
+    <li>Autor: <p>{{p.author}}</p> </li>
+    </ol>
+    <h4> opis: {{p.descritpionproject}} </h4>
+</div>
+{% endfor %}
+
+{% endblock %}

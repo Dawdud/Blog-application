@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+
+    <title>Pavel Stanlley-{%block title %} Blog o zabugowanym optymizmie. {% endblock %}</title>
+     <link rel="stylesheet"  href= "{% static 'css/style.css' %}" />
+     <link rel="stylesheet"  href= "{% static 'css/fontello/css/fontello.css' %}" />
+     <link href='https://fonts.googleapis.com/css?family=Syncopate|Comfortaa' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Marcellus+SC&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+     <link href='https://fonts.googleapis.com/css?family=Amatic+SC:700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<header>
+    <h1 ><a href="{% url 'index' %}">Pavel Stanlley</a></h1>
+    <h2>Blog o zabugowanym optymizmie</h2>
+    </header>
+
+    <nav>
+          <ul>
+            <li><a href="{% url 'index' %}"> Start </a></li>
+            {% if user.is_superuser %}
+            <li><a href="{% url 'restricted' %}">Dodatkowa treść</a></li>
+            {% endif %}
+
+            <li><a href="">Projekty</a><ul>
+                <li><a href="{% url 'conceptions' %}">Pomysły</a></li>
+                <li><a href="{% url 'progress_projects' %}">Rozwijane</a></li>
+                <li><a href="{% url  'endproject' %}">Zakończone</a></li>
+            </ul></li>
+            <li><a href="{% url 'about' %}"> O mnie</a></li>
+            <li><a href="{% url 'contact' %}">kontakt</a></li>
+
+          </ul>
+
+    </nav>
+
+<div class="Container">
+    <div id="secondary">
+
+<aside id = 'About me'>
+<h2>O mnie</h2>
+<p>Amator programowania, który czas spędza
+na pisaniu gier lub stron internetowych
+w Pythonie. Posiada pierwiastek humanisty,
+jak również umysłu ścisłego.</p>
+</aside>
+<aside id="Archive">
+
+<h2>Archiwum</h2>
+
+<select size="1" name="links" onchange="window.location.href=this.options
+    [this.selectedIndex].value">
+<option value=""> Wybierz miesiac</option>
+<option value="{% url 'index' %}post/2016/4">kwiecień-2016(3)</option>
+
+
+</select>
+</aside>
+
+
+
+<aside id="random post">
+<h2> Losowe Posty</h2>
+{% for random in random_post %}
+<li>  <a href= "{% url 'index' %}post/{{random.slug}}">{{random.title}}</a> </li>
+{% endfor %}
+
+</aside>
+
+<aside id="projects">
+    <h2>Realizowane projekty</h2>
+       <h3><a href="{% url 'index' %}project/{{projectslist.slug}}">{{projectslist.projectname}}</a></h3>
+
+
+</aside>
+
+
+</div>
+
+
+
+{% block content %}
+
+
+{% endblock %}
+
+</div>
+<section id="socials">
+    <div class="facebook">
+    <a href="https://www.facebook.com/profile.php?id=100006701957077&fref=ts"> <img src="{% static "images/social_media/facebook.png" %}" alt="Facebook"/> </a>
+        </div>
+    <div class="gplus">
+    <a href="https://plus.google.com/u/0/104378982042464310611"><img src="{% static "images/social_media/google_plus.png" %}" alt="gplus"/></a>
+        </div>
+    <div class="twitter">
+    <a href="https://twitter.com/pavelstanlley"> <img src="{% static "images/social_media/twitter.png" %}" alt="twitter"/></a>
+    </div>
+</section>
+<footer>
+    <div class="information">
+         <p>&copy 2016  Blog by Pavel stanlley. All rights reserved </p>
+         <a href="{% url 'contact' %}"> Kontakt</a>
+         <a href="{% url 'index' %}"> Start </a>
+         <a href="{% url 'conceptions' %}">Pomysły</a>
+    </div>
+
+    <div class="new_post">
+        <h4>Najnowsze Posty</h4>
+        {% for post in new_post %}
+        <ol>
+        <li><a href= "{% url 'index' %}post/{{post.slug}}">{{post.title}}</a></li>
+            </ol>
+        {% endfor %}
+    </div>
+    <div class="ideas">
+        <h4>zakończone projekty</h4>
+        {% for concept in conception %}
+        <ol>
+        <li><a href="{% url 'index' %}project/{{concept.slug}}">{{concept.projectname}}</a></li>
+            </ol>
+        {% endfor %}
+    </div>
+    <div  class="about_blog">
+        <h4>O blogu</h4>
+    </div>
+<p> Creative Commons (Attribution 2.5 Generic) By | Social Icons: <a href ="https://www.iconfinder.com/iconsets/social-icons-24">(Link)</a>  By  Icon54 | http://creativecommons.org/licenses/by/2.5/legalcode | klauzula ograniczenia odpowiedzialności: <a href="{% url 'prawne' %}">(link)</a>
+ </p>
+
+
+
+</footer>
+   </body>
+
+</html>

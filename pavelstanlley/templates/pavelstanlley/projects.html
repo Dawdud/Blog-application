@@ -1,0 +1,7 @@
+{% extends 'pavelstanlley/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% for project in projects %}
+ <a href="{% url 'project_detail' slug=project.slug %}">{{project.projectname}}</a>
+{% endfor %}
+{% endblock %}
